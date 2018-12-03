@@ -39,10 +39,12 @@ console.log(XORString)
 Browser:
 
 ```javascript
+const parseHex = string => parseInt(string, 16)
+
 const aString = "1c0111001f010100061a024b53535009181c"
 const bString = "686974207468652062756c6c277320657965"
-const aBuffer = aString.match(/.{2}/g).map(a => parseInt(a, 16))
-const bBuffer = bString.match(/.{2}/g).map(a => parseInt(a, 16))
+const aBuffer = aString.match(/.{2}/g).map(parseHex)
+const bBuffer = bString.match(/.{2}/g).map(parseHex)
 
 const XORString = aBuffer.map((a,i) => (a ^ bBuffer[i]).toString(16)).join("")
 console.log(XORString)
